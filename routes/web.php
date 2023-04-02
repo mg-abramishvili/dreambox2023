@@ -2,19 +2,18 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('front');
+Route::prefix("k")->group(function() {
+    Route::get('{any}', function () {
+        return view('front');
+    })->where('any', '.*');
 });
 
-// ADMIN
-Route::get('admin', function () {
+Route::get('/admin', function () {
     return view('admin');
-})->middleware(['auth']);
+});
 
-Route::prefix("admin")->middleware(['auth'])->group(function() {
+Route::prefix("admin")->group(function() {
     Route::get('{any}', function () {
         return view('admin');
     })->where('any', '.*');
 });
-
-require __DIR__.'/auth.php';

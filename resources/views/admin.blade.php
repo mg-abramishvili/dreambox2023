@@ -7,11 +7,10 @@
 
         <title>DreamBox - ПУ</title>
         
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
         @vite('resources/css/admin.css')
     </head>
     <body>
-        @auth
+        <!-- @auth
             <div id="admin"></div>
         @endauth
 
@@ -19,7 +18,9 @@
             <main>
                 @yield('content')
             </main>
-        @endguest
+        @endguest -->
+
+        <div id="admin"></div>
         
         @if(Route::currentRouteName() != 'login')
             @vite('resources/js/admin.js')

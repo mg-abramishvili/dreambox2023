@@ -1,8 +1,8 @@
 <template>
     <div class="wrapper">
-        <PesokTheme
-            v-if="config.theme == 'pesok'"
-            ref="pesok" />
+        <Vuz2Theme
+            v-if="config.theme == 'vuz2'"
+            ref="vuz2" />
 
         <div v-if="screensaver.isActive && screensaver.slides.length" class="screensaver">
             <div @click="closeScreensaver()" class="screensaver-inner">
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import PesokTheme from './pesok/layout.vue'
+    import Vuz2Theme from './vuz2/layout.vue'
 
     import Screensaver from './_comps/Screensaver.vue'
     
@@ -21,7 +21,7 @@
         data() {
             return {
                 config: {
-                    theme: 'pesok',
+                    theme: 'vuz2',
                     orientation: 'vertical',
                 },
 
@@ -98,15 +98,11 @@
             this.ScreensaverStartTimer()
         },
         beforeMount() {
-            document.oncontextmenu = new Function("return false")
+            //document.oncontextmenu = new Function("return false")
         },
         components: {
-            PesokTheme,
+            Vuz2Theme,
             Screensaver
         }
     }
 </script>
-
-<style>
-@import "../../../css/screensaver.css"
-</style>

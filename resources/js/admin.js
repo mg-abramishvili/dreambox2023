@@ -24,4 +24,4 @@ app.config.globalProperties.$filters = {
     },
 }
 
-app.mount('#app')
+app.mount('#admin')

@@ -1,15 +1,15 @@
 <template>
-    <template v-if="config.theme == 'pesok'">
-        <PesokVertical
-            v-if="config.orientation == 'vertical'"
-            ref="pesok"
+    <template v-if="config.theme == 'vuz2'">
+        <Vuz2Horizontal
+            v-if="config.orientation == 'horizontal'"
+            ref="vuz2"
             :pages="pages"
             :banners="banners" />
     </template>
 </template>
 
 <script>
-import PesokVertical from './pesok/home/vertical.vue'
+import Vuz2Horizontal from './vuz2/home/horizontal.vue'
 
 export default {
     data() {
@@ -57,7 +57,7 @@ export default {
         },
     },
     components: {
-        PesokVertical
+        Vuz2Horizontal
     }
 }
 </script>

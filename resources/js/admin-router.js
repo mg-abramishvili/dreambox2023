@@ -6,17 +6,11 @@ import Pages from './components/admin/pages/Index.vue'
 import Page from './components/admin/pages/Page.vue'
 import PageMaster from './components/admin/pages/Master.vue'
 
-import Events from './components/admin/events/Index.vue'
-import EventMaster from './components/admin/events/Master.vue'
-
 import Kiosks from './components/admin/kiosks/Index.vue'
 import KioskMaster from './components/admin/kiosks/Master.vue'
 
 import Schemes from './components/admin/schemes/Index.vue'
 import SchemeMaster from './components/admin/schemes/Master.vue'
-
-import Points from './components/admin/points/Index.vue'
-import PointMaster from './components/admin/points/Master.vue'
 
 import Routes from './components/admin/routes/Index.vue'
 import RouteMaster from './components/admin/routes/Master.vue'
@@ -52,16 +46,6 @@ const routes = [
         props: route => ({ query: route.query })
     },
     {
-        path: '/admin/events',
-        name: 'Events',
-        component: Events
-    },
-    {
-        path: '/admin/event-master/:id?',
-        name: 'EventMaster',
-        component: EventMaster
-    },
-    {
         path: '/admin/kiosks',
         name: 'Kiosks',
         component: Kiosks
@@ -80,16 +64,6 @@ const routes = [
         path: '/admin/scheme-master/:id?',
         name: 'SchemeMaster',
         component: SchemeMaster
-    },
-    {
-        path: '/admin/points',
-        name: 'Points',
-        component: Points
-    },
-    {
-        path: '/admin/point-master/:id?',
-        name: 'PointMaster',
-        component: PointMaster
     },
     {
         path: '/admin/routes/:kiosk',

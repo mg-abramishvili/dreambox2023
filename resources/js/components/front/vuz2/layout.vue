@@ -1,5 +1,5 @@
 <template>
-    <div class="pesok-layout">
+    <div class="vuz2-layout">
         <router-view v-slot="{ Component }">
             <keep-alive>
                 <component :is="Component" :key="$route.path" />
@@ -27,5 +27,5 @@
 </script>
 
 <style>
-@import "../../../../css/pesok/vertical.css"
+    @import "../../../../css/vuz2/horizontal.css"
 </style>

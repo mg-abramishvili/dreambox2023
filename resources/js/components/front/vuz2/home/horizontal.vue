@@ -27,8 +27,8 @@
                     <span>Общественное<br>пространство</span>
                 </div>
                 <div class="sidebar-bottom">
-                    <img src="/img/pesok/sidebar-bottom1.png" alt="">
-                    <img src="/img/pesok/sidebar-bottom2.png" alt="">
+                    <img src="/img/vuz2/sidebar-bottom1.png" alt="">
+                    <img src="/img/vuz2/sidebar-bottom2.png" alt="">
                 </div>
             </div>
             <div class="menu">

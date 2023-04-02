@@ -1,15 +1,15 @@
 <template>
-    <template v-if="config.theme == 'pesok'">
-        <PesokVertical
-            v-if="config.orientation == 'vertical'"
-            ref="pesok"
+    <template v-if="config.theme == 'vuz2'">
+        <Vuz2Horizontal
+            v-if="config.orientation == 'horizontal'"
+            ref="vuz2"
             :page="page"
             :kiosk="$route.params.kiosk" />
     </template>
 </template>
 
 <script>
-import PesokVertical from './pesok/pages/vertical.vue'
+import Vuz2Horizontal from './vuz2/pages/horizontal.vue'
 
 export default {
     data() {
@@ -44,19 +44,19 @@ export default {
                     }
     
                     if(block.type == 'routes') {
-                        this.$refs.pesok.$refs.routes[0].closeSearchPanel()
-                        this.$refs.pesok.$refs.routes[0].resetRoutes()
-                        this.$refs.pesok.$refs.routes[0].zoomReset()
-                        this.$refs.pesok.$refs.routes[0].slideToZero()
+                        this.$refs.vuz2.$refs.routes[0].closeSearchPanel()
+                        this.$refs.vuz2.$refs.routes[0].resetRoutes()
+                        this.$refs.vuz2.$refs.routes[0].zoomReset()
+                        this.$refs.vuz2.$refs.routes[0].slideToZero()
                     }
 
                     if(block.type == 'events') {
-                        this.$refs.pesok.$refs.events[0].slideToZero()
-                        this.$refs.pesok.$refs.events[0].descriptionModalContent = ''
+                        this.$refs.vuz2.$refs.events[0].slideToZero()
+                        this.$refs.vuz2.$refs.events[0].descriptionModalContent = ''
                     }
 
                     if(block.type == 'image_slider') {
-                        this.$refs.pesok.slideToZero()
+                        this.$refs.vuz2.slideToZero()
                     }
                 })
             }
@@ -83,7 +83,7 @@ export default {
         },
     },
     components: {
-        PesokVertical
+        Vuz2Horizontal
     }
 }
 </script>
