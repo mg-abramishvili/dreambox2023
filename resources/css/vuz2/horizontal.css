@@ -1,0 +1,68 @@
+html {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    /*cursor: none;*/
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#front {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.vuz2-layout {
+    position: relative;
+    width: 100vw;
+    max-width: 177.78vh;
+    height: 56.25vw;
+    max-height: 100vh;
+    overflow: hidden;
+    margin: 0 auto;
+    background: #fff;
+    background: url('/img/vuz2/bg.jpg');
+    background-size: cover;
+    background-position: center center;
+}
+header {
+    display: flex;
+    align-items: center;
+    height: 17.7vh;
+    background-color: #fff;
+    padding: 0 2vh;
+}
+header .logo {
+    width: 25%;
+}
+header .logo img {
+    width: 80%;
+}
+header .title {
+    width: 50%;
+}
+header .title p {
+    margin: 0;
+    font-size: 3.5vh;
+    font-weight: 700;
+}
+header .datetime {
+    width: 25%;
+    text-align: right;
+}
+header .datetime p {
+    margin: 0;
+}
+header .datetime .time {
+    font-size: 3.5vh;
+    font-weight: 700;
+}
+header .datetime .date {
+    font-size: 2vh;
+    color: #797979;
+}

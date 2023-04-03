@@ -5,4 +5,11 @@ import router from './front-router'
 
 import App from './components/front/App.vue'
 
-createApp(App).use(router).mount('#front')
+import dayjs from 'dayjs'
+import 'dayjs/locale/ru'
+
+const app = createApp(App).use(router)
+
+app.config.globalProperties.$dayjs = dayjs
+
+app.mount('#front')

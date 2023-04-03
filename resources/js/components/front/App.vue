@@ -1,13 +1,11 @@
 <template>
-    <div class="wrapper">
-        <Vuz2Theme
-            v-if="config.theme == 'vuz2'"
-            ref="vuz2" />
+    <Vuz2Theme
+        v-if="config.theme == 'vuz2'"
+        ref="vuz2" />
 
-        <div v-if="screensaver.isActive && screensaver.slides.length" class="screensaver">
-            <div @click="closeScreensaver()" class="screensaver-inner">
-                <Screensaver ref="screensaver" :slides="screensaver.slides" />
-            </div>
+    <div v-if="screensaver.isActive && screensaver.slides.length" class="screensaver">
+        <div @click="closeScreensaver()" class="screensaver-inner">
+            <Screensaver ref="screensaver" :slides="screensaver.slides" />
         </div>
     </div>
 </template>

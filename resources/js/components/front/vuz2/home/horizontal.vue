@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <div class="banners">
+        <!-- <div class="banners">
             <swiper v-if="banners.length"
                 :modules="modules"
                 :slides-per-view="1"
@@ -17,28 +17,15 @@
                     <div class="banner-home-slide" v-bind:style="{ 'background-image': 'url(' + banner.content + ')' }"></div>
                 </swiper-slide>
             </swiper>
-        </div>
+        </div> -->
 
-        <div class="home-main">
-            <div class="sidebar">
-                <div class="logo">
-                    <img :src="$parent.config.logo" alt="">
-                    <p>{{ $parent.config.title }}</p>
-                    <span>Общественное<br>пространство</span>
-                </div>
-                <div class="sidebar-bottom">
-                    <img src="/img/vuz2/sidebar-bottom1.png" alt="">
-                    <img src="/img/vuz2/sidebar-bottom2.png" alt="">
-                </div>
-            </div>
-            <div class="menu">
-                <ul>
-                    <li @click="goToPage(page)" v-for="page in pages" class="menu-item">
-                        <div v-if="page.icon" class="menu-item-image" v-bind:style="{ 'background-image': 'url(' + page.icon.image + ')' }"></div>
-                        <span>{{ page.name }}</span>
-                    </li>
-                </ul>
-            </div>
+        <div class="menu">
+            <ul>
+                <li @click="goToPage(page)" v-for="page in pages" class="menu-item">
+                    <div v-if="page.icon" class="menu-item-image" v-bind:style="{ 'background-image': 'url(' + page.icon.image + ')' }"></div>
+                    <span>{{ page.name }}</span>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
