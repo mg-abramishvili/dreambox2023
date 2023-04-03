@@ -64,9 +64,6 @@
                         <li>
                             <button @click="addBlock('routes')" class="btn btn-outline-primary">+ Маршруты</button>
                         </li>
-                        <li>
-                            <button @click="addBlock('events')" class="btn btn-outline-primary">+ Афиша</button>
-                        </li>
                     </ul>
                 </div>
 
