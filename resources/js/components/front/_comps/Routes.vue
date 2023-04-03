@@ -181,7 +181,7 @@ import Panzoom from '@panzoom/panzoom'
 import SimpleKeyboard from "./kbRoutes.vue"
 
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import 'swiper/css'
+import 'swiper/swiper.min.css'
 
 export default {
     props: ['kiosk'],

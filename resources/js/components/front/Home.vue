@@ -41,6 +41,8 @@ export default {
             })
         },
         goToPage(page) {
+            this.$refs.vuz2.slideToZero()
+
             page.blocks.forEach(block => {
                 if(block.type == 'video') {
                     setTimeout(() => {

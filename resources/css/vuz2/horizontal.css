@@ -66,3 +66,51 @@ header .datetime .date {
     font-size: 2vh;
     color: #797979;
 }
+
+.menu {
+    margin-top: 14.5vh;
+    width: 85vw;
+    margin-left: 7.5vw;
+    height: 60vh;
+    position: relative;
+    overflow: hidden;
+}
+.menu .swiper-container {
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+.menu-item {
+    background-color: #fff;
+    border-radius: 1.5vh;
+    height: calc(28vh - 50px);
+    position: relative;
+    overflow: hidden;
+}
+.menu-item:before {
+    content: '';
+    display: block;
+    width: 10vh;
+    height: 100%;
+    background-color: #1F3C8A;
+}
+.menu-item-image {
+    width: 12vh;
+    height: 12vh;
+    background-size: cover;
+    border-radius: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 4vh;
+}
+.menu-item span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 19vh;
+    right: 5vh;
+    font-size: 2.3vh;
+}

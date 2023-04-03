@@ -1,40 +1,27 @@
 <template>
     <div class="home">
-        <!-- <div class="banners">
-            <swiper v-if="banners.length"
-                :modules="modules"
-                :slides-per-view="1"
-                :space-between="0"
-                :loop="swiperConfig('loop')"
-                :autoplay="swiperConfig('autoplay')"
-                :autoplayDelay="5000"
-                :autoplayDisableOnInteraction="false"
-                :allow-touch-move="swiperConfig('allowTouchMove')"
+        <div class="menu">
+            <swiper v-if="pages.length"
+                :slides-per-view="3"
+                :slides-per-column="2"
+                :slides-per-column-fill="'column'"
+                :space-between="50"
+                :allow-touch-move="true"
                 @swiper="onSwiper"
-                class="banner-home-slider">
+                class="menu-slider">
                 
-                <swiper-slide v-for="(banner, index) in banners">
-                    <div class="banner-home-slide" v-bind:style="{ 'background-image': 'url(' + banner.content + ')' }"></div>
+                <swiper-slide v-for="(page, index) in pages" @click="goToPage(page)" class="menu-item">
+                    <div class="menu-item-image" v-bind:style="{ 'background-image': 'url(' + page.icon.image + ')' }"></div>
+                    <span>{{ page.name }}</span>
                 </swiper-slide>
             </swiper>
-        </div> -->
-
-        <div class="menu">
-            <ul>
-                <li @click="goToPage(page)" v-for="page in pages" class="menu-item">
-                    <div v-if="page.icon" class="menu-item-image" v-bind:style="{ 'background-image': 'url(' + page.icon.image + ')' }"></div>
-                    <span>{{ page.name }}</span>
-                </li>
-            </ul>
         </div>
     </div>
 </template>
 
 <script>
-import { Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import 'swiper/css'
-import 'swiper/css/autoplay'
+import 'swiper/swiper.min.css'
 
 export default {
     props: ['pages', 'banners'],
@@ -45,25 +32,16 @@ export default {
             }
         }
     },
-    setup() {
-        return {
-            modules: [Autoplay],
-        }
-    },
     methods: {
         onSwiper(swiper) {
             this.swiper = swiper
         },
-        swiperConfig(param) {
-            if(this.banners.length > 1) {
-                return true
-            } else {
-                return false
-            }
-        },
         goToPage(page) {
             this.$parent.goToPage(page)
         },
+        slideToZero() {
+            this.swiper.slideTo(0)
+        }
     },
     components: {
         Swiper,

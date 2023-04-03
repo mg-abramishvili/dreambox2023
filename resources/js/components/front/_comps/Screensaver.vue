@@ -24,7 +24,7 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import 'swiper/css'
+import 'swiper/swiper.min.css'
 
 export default {
     props: ['slides'],

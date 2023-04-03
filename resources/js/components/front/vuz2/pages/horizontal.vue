@@ -86,7 +86,7 @@ import { read, utils } from 'xlsx'
 import Routes from '../../_comps/Routes.vue'
 
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import 'swiper/css'
+import 'swiper/swiper.min.css'
 
 export default {
     props: ['page', 'kiosk'],
