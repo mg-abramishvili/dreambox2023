@@ -25,6 +25,7 @@ class PageController extends Controller
                 'parent' => function ($query) {
                     $query->with('blocks');
                 },
+                'icon'
             ])
             ->find($id);
     }
