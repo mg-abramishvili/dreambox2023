@@ -171,6 +171,7 @@ body {
     display: flex;
     align-items: center;
     border-bottom: 1px solid #ddd;
+    padding: 10px;
 }
 .page-list-item:hover {
     cursor: pointer;
@@ -179,12 +180,14 @@ body {
 .page-list-item.ghost {
     background-color: rgba(254, 133, 133, 0.85);
 }
+.page-list-item-name {
+    display: flex;
+    align-items: center;
+}
 .page-icon {
-    display: inline-block;
-    vertical-align: middle;
     width: 20px;
     color: #2470dc;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 .page-icon svg {
     width: 100%;
