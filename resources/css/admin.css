@@ -167,6 +167,31 @@ body {
     margin-right: 5px;
 }
 
+.page-list-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+.page-list-item:hover {
+    cursor: pointer;
+    background-color: #ddd;
+}
+.page-list-item.ghost {
+    background-color: rgba(254, 133, 133, 0.85);
+}
+.page-icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    color: #2470dc;
+    margin-right: 10px;
+}
+.page-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
 .page-area {
     border: 5px dashed #ccc;
     min-height: 200px;

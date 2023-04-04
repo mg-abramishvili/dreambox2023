@@ -231,18 +231,18 @@ export default {
         if(this.query.from) {
             this.parent_id = this.query.from
         }
-
-        if(this.$route.params.id) {
-            this.loadPage()
-        } else {
-            this.views.loading = false
-        }
     },
     methods: {
         loadIcons() {
             axios.get('/api/admin/icons')
             .then(response => {
                 this.icons = response.data
+
+                if(this.$route.params.id) {
+                    this.loadPage()
+                } else {
+                    this.views.loading = false
+                }
             })
         },
         loadPage() {

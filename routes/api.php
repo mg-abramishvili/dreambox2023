@@ -39,16 +39,10 @@ Route::put('admin/config-update', [App\Http\Controllers\Admin\ConfigController::
 // ADMIN PAGES
 Route::get('admin/pages', [App\Http\Controllers\Admin\PageController::class, 'index']);
 Route::post('admin/pages', [App\Http\Controllers\Admin\PageController::class, 'store']);
+Route::post('admin/pages-reorder', [App\Http\Controllers\Admin\PageController::class, 'reorderPages']);
 Route::get('admin/page/{id}', [App\Http\Controllers\Admin\PageController::class, 'page']);
 Route::put('admin/page/{id}/update', [App\Http\Controllers\Admin\PageController::class, 'update']);
 Route::delete('admin/page/{id}/delete', [App\Http\Controllers\Admin\PageController::class, 'delete']);
-
-// ADMIN EVENTS
-Route::get('admin/events', [App\Http\Controllers\Admin\EventController::class, 'index']);
-Route::post('admin/events', [App\Http\Controllers\Admin\EventController::class, 'store']);
-Route::get('admin/event/{id}', [App\Http\Controllers\Admin\EventController::class, 'event']);
-Route::put('admin/event/{id}/update', [App\Http\Controllers\Admin\EventController::class, 'update']);
-Route::delete('admin/event/{id}/delete', [App\Http\Controllers\Admin\EventController::class, 'delete']);
 
 // ADMIN BLOCKS
 Route::post('admin/blocks', [App\Http\Controllers\Admin\BlockController::class, 'store']);
@@ -67,13 +61,6 @@ Route::post('admin/schemes', [App\Http\Controllers\Admin\SchemeController::class
 Route::get('admin/scheme/{id}', [App\Http\Controllers\Admin\SchemeController::class, 'scheme']);
 Route::put('admin/scheme/{id}/update', [App\Http\Controllers\Admin\SchemeController::class, 'update']);
 Route::delete('admin/scheme/{id}/delete', [App\Http\Controllers\Admin\SchemeController::class, 'delete']);
-
-// ADMIN POINTS
-Route::get('admin/points', [App\Http\Controllers\Admin\PointController::class, 'index']);
-Route::post('admin/points', [App\Http\Controllers\Admin\PointController::class, 'store']);
-Route::get('admin/point/{id}', [App\Http\Controllers\Admin\PointController::class, 'point']);
-Route::put('admin/point/{id}/update', [App\Http\Controllers\Admin\PointController::class, 'update']);
-Route::delete('admin/point/{id}/delete', [App\Http\Controllers\Admin\PointController::class, 'delete']);
 
 // ADMIN ROUTES
 Route::get('admin/routes/{kiosk}', [App\Http\Controllers\Admin\RouteController::class, 'index']);

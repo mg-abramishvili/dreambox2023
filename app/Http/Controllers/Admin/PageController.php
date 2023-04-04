@@ -110,4 +110,20 @@ class PageController extends Controller
 
         $page->delete();
     }
+
+    public function reorderPages(Request $request)
+    {
+        $this->validate($request, [
+            'pages' => 'required',
+        ]);
+
+        foreach($request->pages as $p)
+        {
+            $page = Page::find($p['id']);
+
+            $page->order = $p['order'];
+
+            $page->save();
+        }
+    }
 }
