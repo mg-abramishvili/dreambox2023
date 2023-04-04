@@ -8,8 +8,8 @@
                     </svg>
                 </router-link>
 
-                <template v-if="$route.params.id && route.kiosk && route.point">
-                    {{ route.kiosk.name }} &rarr; {{ route.point.name }}
+                <template v-if="$route.params.id && route.kiosk">
+                    {{ route.kiosk.name }}
                 </template>
                 <template v-else>
                     Новый маршрут
@@ -22,24 +22,11 @@
         </div>
 
         <div v-if="!views.loading" class="content p-4">
-            <div class="row">
-                <div class="col-12 col-lg">
-                    <div class="mb-4">
-                        <label for="form-label">Киоск</label>
-                        <select v-model="selected.kiosk" class="form-select">
-                            <option v-for="kiosk in kiosks" :value="kiosk">{{ kiosk.name }}</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-12 col-lg-6">
-                    <div class="mb-4">
-                        <label for="form-label">Точка</label>
-                        <select v-model="selected.point" class="form-select">
-                            <option v-for="point in points" :value="point">{{ point.name }}</option>
-                        </select>
-                    </div>
-                </div>
+            <div class="mb-4">
+                <label for="form-label">Киоск</label>
+                <select v-model="selected.kiosk" class="form-select">
+                    <option v-for="kiosk in kiosks" :value="kiosk">{{ kiosk.name }}</option>
+                </select>
             </div>
 
             <div class="mb-4">
@@ -108,13 +95,11 @@
             return {
                 schemes: [],
                 kiosks: [],
-                points: [],
 
                 route: '',
 
                 selected: {
                     kiosk: '',
-                    point: '',
                     scheme1: '',
                     scheme2: '',
                 },
@@ -149,19 +134,9 @@
                 .then(response => {
                     this.schemes = response.data
 
-                    this.loadPoints()
-                })
-            },
-            loadPoints() {
-                axios.get('/api/admin/points')
-                .then(response => {
-                    this.points = response.data
-
                     if(this.$route.params.id) {
                         this.loadRoute()
-                    }
-
-                    if(!this.$route.params.id) {
+                    } else {
                         this.views.loading = false
                     }
                 })
@@ -172,7 +147,6 @@
                     this.route = response.data
 
                     this.selected.kiosk = this.kiosks.find(k => k.id == response.data.kiosk_id)
-                    this.selected.point = this.points.find(p => p.id == response.data.point_id)
                     this.selected.scheme1 = this.schemes.find(s => s.id == response.data.scheme1_id)
 
                     if(response.data.scheme2_id) {
@@ -305,7 +279,6 @@
                 if(this.$route.params.id) {
                     axios.put(`/api/admin/route/${this.$route.params.id}/update`, {
                         kiosk_id: this.selected.kiosk.id,
-                        point_id: this.selected.point.id,
                         scheme1_id: this.selected.scheme1.id,
                         scheme2_id: this.selected.scheme2.id,
                         floor1_text_begin: this.floor1_text_begin,
@@ -324,7 +297,6 @@
                 } else {
                     axios.post(`/api/admin/routes`, {
                         kiosk_id: this.selected.kiosk.id,
-                        point_id: this.selected.point.id,
                         scheme1_id: this.selected.scheme1.id,
                         scheme2_id: this.selected.scheme2.id,
                         floor1_text_begin: this.floor1_text_begin,

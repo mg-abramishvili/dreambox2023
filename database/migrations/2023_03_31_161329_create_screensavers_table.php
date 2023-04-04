@@ -11,8 +11,6 @@ return new class extends Migration
         Schema::create('screensavers', function (Blueprint $table) {
             $table->id();
             $table->integer('page_id')->nullable();
-            $table->integer('point_id')->nullable();
-            $table->integer('event_id')->nullable();
             $table->string('name');
             $table->string('type');
             $table->string('content');
