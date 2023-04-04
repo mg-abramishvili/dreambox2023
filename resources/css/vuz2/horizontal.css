@@ -233,6 +233,7 @@ header .datetime .date {
     display: flex;
     align-items: flex-start;
     position: relative;
+    justify-content: space-between;
 }
 
 .key-anim01,

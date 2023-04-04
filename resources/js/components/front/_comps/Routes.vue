@@ -95,7 +95,7 @@
         </div>
 
         <div class="routes-list">
-            <swiper v-if="routes.length"
+            <!-- <swiper v-if="routes.length"
                 :slides-per-view="1"
                 :space-between="0"
                 :loop="false"
@@ -121,7 +121,12 @@
                         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                     </svg>
                 </button>
-            </swiper>
+            </swiper> -->
+            <ul>
+                <li v-for="route in routes" :key="route.id" @click="SelectRoute(route)">
+                    <a>{{ route.id }}</a>
+                </li>
+            </ul>
         </div>
 
         <div class="map-slides-control-buttons">
@@ -300,7 +305,7 @@ export default {
             this.swiper.slideTo(currentSlide + 1)
         },
         slideToZero() {
-            this.swiper.slideTo(0)
+            // this.swiper.slideTo(0)
         }
     },
     components: {
