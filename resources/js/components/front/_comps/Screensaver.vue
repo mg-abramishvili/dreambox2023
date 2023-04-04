@@ -13,7 +13,7 @@
             
             <swiper-slide v-for="(slide, index) in slides" class="ScreensaverHooper-slide">
                 <img v-if="slide.type == 'image' && slide.content" :src="slide.content"/>
-                <video v-if="slide.type == 'video' && slide.content" :id="'video_' + slide.id" muted nocontrols>
+                <video v-if="slide.type == 'video' && slide.content" :id="'video_' + slide.id" nocontrols>
                     <source :src="slide.content" type="video/mp4">
                 </video>
             </swiper-slide>

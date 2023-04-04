@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class="panzoom-wrapper" :class="[`${views.windowWidth > 1920 ? 'map4K':'map1080'}`]">
+    <div class="routes-page" :class="[`${views.windowWidth > 1920 ? 'map4K':'map1080'}`]">
+        <div class="panzoom-wrapper">
             <div class="panzoom-controls">
                 <button @click="zoomIn()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
@@ -14,11 +14,11 @@
                     </svg>
                 </button>
                 <br>
-                <button @click="openSearchPanel()">
+                <!-- <button @click="openSearchPanel()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                     </svg>
-                </button>
+                </button> -->
             </div>
 
             <div id="panzoom">
@@ -26,7 +26,7 @@
                     <template v-for="scheme in schemes">
                         <img v-show="scheme.id == selected.scheme.id" :src="scheme.image">
 
-                        <svg v-if="scheme.id == selected.scheme.id" class="map-path svg1">
+                        <svg v-if="selected.slide == 1" class="map-path svg1">
                             <template v-for="(point, index) in selected.route.route_code_floor1">
                                 <template v-if="selected.route.route_code_floor1[index - 1]">
                                     <path v-if="point.x" class="key-anim01" fill="none" stroke-width="5px" stroke="rgba(255,51,51,0.8)" :d="'M' + point.x + ' ' + point.y + ', ' + selected.route.route_code_floor1[index - 1].x + ' ' + selected.route.route_code_floor1[index - 1].y"></path>
@@ -37,6 +37,17 @@
                                 <circle v-if="point.x" :cx="point.x" :cy="point.y" r="0" fill="#f33"></circle>
                             </template>
 
+                            <!-- <template v-for="point in points.filter(p => p.scheme_id == selected.scheme.id)">
+                                <polygon v-if="selected.route.point_id == point.id" @click="selectPoint(point)" :points="point.object.join()" style="fill:rgba(0,0,255,0.05);stroke:transparent;stroke-width:1"></polygon>
+                                <polygon v-else @click="selectPoint(point)" :points="point.object.join()" style="fill:transparent;stroke:transparent;stroke-width:1"></polygon>
+                                
+                                <text v-if="selected.route.point_id == point.id" style="stroke: #ffffff; stroke-width: 0.2px;" :x="point.object[0].split(' ')[0]" :y="point.object[0].split(' ').pop()" font-family='Verdana' font-size='6' fill='blue' text-anchor="left">
+                                    <tspan dx='5' dy='5' font-weight='bold'>{{ point.name }}</tspan>
+                                </text>
+                            </template> -->
+                        </svg>
+
+                        <svg v-if="selected.slide == 2" class="map-path svg1">
                             <template v-for="(point, index) in selected.route.route_code_floor2">
                                 <template v-if="selected.route.route_code_floor2[index - 1]">
                                     <path v-if="point.x" class="key-anim01" fill="none" stroke-width="5px" stroke="rgba(255,51,51,0.8)" :d="'M' + point.x + ' ' + point.y + ', ' + selected.route.route_code_floor2[index - 1].x + ' ' + selected.route.route_code_floor2[index - 1].y"></path>
@@ -47,28 +58,16 @@
                                 <circle v-if="point.x" :cx="point.x" :cy="point.y" r="0" fill="#f33"></circle>
                             </template>
 
-                            <template v-for="point in points.filter(p => p.scheme_id == selected.scheme.id)">
+                            <!-- <template v-for="point in points.filter(p => p.scheme_id == selected.scheme.id)">
                                 <polygon v-if="selected.route.point_id == point.id" @click="selectPoint(point)" :points="point.object.join()" style="fill:rgba(0,0,255,0.05);stroke:transparent;stroke-width:1"></polygon>
                                 <polygon v-else @click="selectPoint(point)" :points="point.object.join()" style="fill:transparent;stroke:transparent;stroke-width:1"></polygon>
                                 
-                                <!-- <text v-if="selected.route.point_id == point.id" style="stroke: #ffffff; stroke-width: 0.2px;" :x="point.object[0].split(' ')[0]" :y="point.object[0].split(' ').pop()" font-family='Verdana' font-size='6' fill='blue' text-anchor="left">
+                                <text v-if="selected.route.point_id == point.id" style="stroke: #ffffff; stroke-width: 0.2px;" :x="point.object[0].split(' ')[0]" :y="point.object[0].split(' ').pop()" font-family='Verdana' font-size='6' fill='blue' text-anchor="left">
                                     <tspan dx='5' dy='5' font-weight='bold'>{{ point.name }}</tspan>
-                                </text> -->
-                            </template>
+                                </text>
+                            </template> -->
                         </svg>
                     </template>
-
-                    <!-- <svg v-if="selected.slide === 2" class="map-path svg2">
-                        <template v-for="(point, index) in selected.route.route_code_floor2">
-                            <template v-if="selected.route.route_code_floor2[index - 1]">
-                                <path v-if="point.x" class="key-anim01" fill="none" stroke-width="5px" stroke="rgba(255,51,51,0.8)" :d="'M' + point.x + ' ' + point.y + ', ' + selected.route.route_code_floor2[index - 1].x + ' ' + selected.route.route_code_floor2[index - 1].y"></path>
-                            </template>
-                            <template v-else>
-                                <path v-if="point.x" class="key-anim01" fill="none" stroke-width="5px" stroke="rgba(255,51,51,0.8)" :d="'M' + point.x + ' ' + point.y + ', '"></path>
-                            </template>
-                            <circle v-if="point.x" id="02" :cx="point.x" :cy="point.y" r="0" fill="#f33"></circle>
-                        </template>
-                    </svg> -->
 
                     <template v-if="kiosks.length">
                         <svg style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; width: 100%; height: 100%;">
@@ -107,7 +106,7 @@
                 <swiper-slide v-for="i in Math.ceil(routes.length / 6)">
                     <ul>
                         <li v-for="route in routes.slice((i - 1) * 6, i * 6)" :key="route.id" @click="SelectRoute(route)">
-                            <a>{{ route.point.name }}</a>
+                            <a>{{ route.id }}</a>
                         </li>
                     </ul>
                 </swiper-slide>
@@ -125,39 +124,20 @@
             </swiper>
         </div>
 
-        <!-- <button @click="searchPanel_button()" class="route-open-search-panel-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-            </svg>
-        </button> -->
-
-        <!-- <div v-if="selected.route.schemes1" class="route-about">
-            <template v-if="selected.route.schemes1 && selected.route.schemes1.id.toString() == selected.floor">
-                {{selected.route.schemes1.name }}
-            </template>
-
-            <template v-if="selected.route.schemes2 && selected.route.schemes2.id.toString() === selected.floor">
-                {{selected.route.schemes2.name }}
-            </template>
-
-            <br>
-            {{selected.route.name}}
-        </div> -->
-
-        
-
-        <!-- <button v-show="views.searchPanel == false && selected.slide === 2" @click="PrevScheme(selected.route)" class="prevnextbutton prev_button">
-            Начало маршрута
-        </button>
-        <button v-show="views.searchPanel == false && selected.route.schemes2 && selected.route.schemes2 && selected.slide === 1" @click="NextScheme(selected.route)" class="prevnextbutton next_button">
-            Продолжить маршрут
-        </button> -->
+        <div class="map-slides-control-buttons">
+            <button v-show="views.searchPanel == false && selected.slide === 2" @click="PrevScheme(selected.route)" class="prevnextbutton prev_button">
+                &larr; Начало маршрута
+            </button>
+            <button v-show="views.searchPanel == false && selected.route.scheme2_id && selected.route.scheme2_id && selected.slide === 1" @click="NextScheme(selected.route)" class="prevnextbutton next_button">
+                Продолжить маршрут &rarr;
+            </button>
+        </div>
 
         <div v-show="views.searchPanel" class="search-panel">
             <button @click="closeSearchPanel()" class="search-panel-close-button">&times;</button>
             <ul>
                 <li v-for="route in filteredRoutes" :key="route.id" @click="SelectRoute(route)">
-                    <a>{{ route.point.name }}</a>
+                    <a>{{ route.id }}</a>
                 </li>
             </ul>
 
@@ -189,12 +169,12 @@ export default {
         return {
             schemes: [],
             routes: [],
-            points: [],
             kiosks: [],
 
             selected: {
                 scheme: '',
-                route: ''
+                route: '',
+                slide: 1,
             },
 
             views: {
@@ -219,7 +199,6 @@ export default {
 
         this.loadSchemes()
         this.loadRoutes()
-        this.loadPoints()
         this.loadKiosks()
     },
     computed: {
@@ -248,12 +227,6 @@ export default {
                 this.routes = response.data
             })
         },
-        loadPoints() {
-            axios.get(`/api/points`)
-            .then(response => {
-                this.points = response.data
-            })
-        },
         loadKiosks() {
             axios.get(`/api/kiosks`)
             .then(response => {
@@ -263,25 +236,24 @@ export default {
         SelectRoute(route) {
             this.views.searchPanel = false
             this.searchInput = ''
-            this.selected.floor = route.scheme1_id
 
             axios.get(`/api/route/${route.id}`)
             .then(response => {
                 this.selected.route = response.data
                 this.selected.slide = 1
             })
-        },
-        selectPoint(point) {
-            this.selected.scheme = this.schemes.find(s => s.id == point.scheme_id)
-            this.selected.route = point.routes.filter(r => r.scheme1_id == this.selected.scheme.id)[0]
+
+            this.zoomReset()
         },
         PrevScheme(selectedRoute) {
-            this.selected.floor = selected.route.scheme1_id
+            this.selected.scheme = this.schemes.find(s => s.id == selectedRoute.scheme1_id)
             this.selected.slide = 1
+            this.zoomReset()
         },
         NextScheme(selectedRoute) {
-            this.selected.floor = selected.route.scheme2_id
+            this.selected.scheme = this.schemes.find(s => s.id == selectedRoute.scheme2_id)
             this.selected.slide = 2
+            this.zoomReset()
         },
         onChange(input) {
             this.searchInput = input
@@ -302,7 +274,6 @@ export default {
         },
         resetRoutes() {
             this.selected.slide = 1
-            this.selected.floor = 1
             this.selected.route = ''
             this.searchInput = ''
         },

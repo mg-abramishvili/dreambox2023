@@ -2999,3 +2999,25 @@ dialog :link {
     display: none;
   }
 }
+
+
+
+
+body {
+  background-color: #ddd;
+}
+#viewFind,
+#sidebarToggle,
+#toolbarViewerRight,
+#scaleSelectContainer,
+.toolbarButtonSpacer {
+  display: none;
+}
+#toolbarContainer {
+  background-color: #1F3C8A;
+}
+#pageNumber {
+  background: none;
+  border-color: transparent;
+  padding-right: 0;
+}
