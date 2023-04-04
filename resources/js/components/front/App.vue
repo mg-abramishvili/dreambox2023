@@ -29,6 +29,8 @@
                     timer: 60000,
                     slides: [],
                 },
+
+                checkFocusI: 0,
             }
         },
         created() {
@@ -81,6 +83,12 @@
 
                 this.ScreensaverResetTimer()
             },
+            checkFocus() {
+                if(document.activeElement == document.getElementById("page-block-pdf")) {
+                    console.log("clicked "+(this.checkFocusI++))
+                    window.focus()
+                }
+            }
         },
         mounted() {
             this._keyListener = function(e) {
@@ -94,6 +102,8 @@
             this.initScreensaver()
 
             this.ScreensaverStartTimer()
+
+            window.setInterval(this.checkFocus, 100)
         },
         beforeMount() {
             //document.oncontextmenu = new Function("return false")
