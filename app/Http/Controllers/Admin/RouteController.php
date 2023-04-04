@@ -10,12 +10,12 @@ class RouteController extends Controller
 {
     public function index($kiosk)
     {
-        return Route::where('kiosk_id', $kiosk)->with('kiosk', 'point')->get();
+        return Route::where('kiosk_id', $kiosk)->with('kiosk')->get();
     }
 
     public function route($id)
     {
-        return Route::with('kiosk', 'point')->find($id);
+        return Route::with('kiosk')->find($id);
     }
 
     public function store(Request $request) {
