@@ -227,6 +227,33 @@ header .datetime .date {
     overflow: hidden;
 }
 
+.page-block-excel table {
+    border-collapse: collapse;
+    margin: 1rem 0;
+    display: inline-block;
+    overflow-x: auto;
+    text-align: left;
+    font-size: 1.6vh;
+    background-color: #fff;
+}
+.page-block-excel table tr {
+    border-top: 1px solid #dfe2e5;
+}
+.page-block-excel table tr:nth-child(2n) {
+    background-color: #f6f8fa;
+}
+.page-block-excel table td,
+.page-block-excel table th {
+    border: 1px solid #dfe2e5;
+    padding: .6em 1em;
+}
+
+.page-block-iframe iframe {
+    width: 100%;
+    height: 53vh;
+    overflow: hidden;
+}
+
 
 /* ROUTES */
 .routes-page {
