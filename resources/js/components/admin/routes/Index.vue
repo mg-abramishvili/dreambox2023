@@ -19,7 +19,7 @@
             <table v-if="routes.length" class="table align-middle">
                 <tbody>
                     <tr v-for="route in routes">
-                        <td>{{ route.kiosk.name }}</td>
+                        <td>{{ route.name }}</td>
                         <td class="text-end">
                             <router-link :to="{ name: 'RouteMaster', params: {id: route.id} }" class="btn btn-sm btn-outline-primary">Правка</router-link>
                         </td>

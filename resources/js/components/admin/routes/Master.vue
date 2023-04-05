@@ -30,6 +30,11 @@
             </div>
 
             <div class="mb-4">
+                <label for="form-label">Название</label>
+                <input v-model="name" type="text" class="form-control">
+            </div>
+
+            <div class="mb-4">
                 <label for="form-label">Схема 1</label>
                 <select v-model="selected.scheme1" class="form-control mb-2">
                     <option v-for="scheme in schemes" :key="'key_' + scheme.id" :value="scheme">{{ scheme.name }}</option>
@@ -104,6 +109,7 @@
                     scheme2: '',
                 },
 
+                name: '',
                 route_code_floor1: [],
                 route_code_floor2: [],
 
@@ -145,6 +151,8 @@
                 axios.get(`/api/admin/route/${this.$route.params.id}`)
                 .then(response => {
                     this.route = response.data
+
+                    this.name = response.data.name
 
                     this.selected.kiosk = this.kiosks.find(k => k.id == response.data.kiosk_id)
                     this.selected.scheme1 = this.schemes.find(s => s.id == response.data.scheme1_id)
@@ -262,6 +270,13 @@
                 }
             },
             save() {
+                if(!this.name) {
+                    return this.$swal({
+                        text: 'Назовите маршрут',
+                        icon: 'error',
+                    })
+                }
+
                 if(!this.selected.scheme1) {
                     return this.$swal({
                         text: 'Выберите схему',
@@ -279,6 +294,7 @@
                 if(this.$route.params.id) {
                     axios.put(`/api/admin/route/${this.$route.params.id}/update`, {
                         kiosk_id: this.selected.kiosk.id,
+                        name: this.name,
                         scheme1_id: this.selected.scheme1.id,
                         scheme2_id: this.selected.scheme2.id,
                         floor1_text_begin: this.floor1_text_begin,
@@ -297,6 +313,7 @@
                 } else {
                     axios.post(`/api/admin/routes`, {
                         kiosk_id: this.selected.kiosk.id,
+                        name: this.name,
                         scheme1_id: this.selected.scheme1.id,
                         scheme2_id: this.selected.scheme2.id,
                         floor1_text_begin: this.floor1_text_begin,

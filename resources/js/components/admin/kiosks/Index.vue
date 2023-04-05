@@ -2,7 +2,7 @@
     <div>
         <div class="content-header px-4">
             <h1>Киоски</h1>
-            <router-link :to="{name: 'KioskMaster'}" class="btn btn-primary">Добавить</router-link>
+            <router-link :to="{name: 'KioskMaster'}" v-if="!kiosks.length" class="btn btn-primary">Добавить</router-link>
         </div>
 
         <div v-if="views.loading" class="p-4">

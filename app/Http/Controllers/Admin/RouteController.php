@@ -21,6 +21,7 @@ class RouteController extends Controller
     public function store(Request $request) {
         $this->validate($request, [
             'kiosk_id' => 'required',
+            'name' => 'required',
             'scheme1_id' => 'required',
             'route_code_floor1' => 'required',
         ]);
@@ -28,6 +29,7 @@ class RouteController extends Controller
         $route = new Route();
         
         $route->kiosk_id = $request->kiosk_id;
+        $route->name = $request->name;
         $route->scheme1_id = $request->scheme1_id;
         $route->route_code_floor1 = $request->route_code_floor1;
 
@@ -57,6 +59,7 @@ class RouteController extends Controller
     public function update($id, Request $request) {
         $this->validate($request, [
             'kiosk_id' => 'required',
+            'name' => 'required',
             'scheme1_id' => 'required',
             'route_code_floor1' => 'required',
         ]);
@@ -64,6 +67,7 @@ class RouteController extends Controller
         $route = Route::find($id);
         
         $route->kiosk_id = $request->kiosk_id;
+        $route->name = $request->name;
         $route->scheme1_id = $request->scheme1_id;
         $route->route_code_floor1 = $request->route_code_floor1;
 
