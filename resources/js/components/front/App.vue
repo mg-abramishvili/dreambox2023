@@ -106,7 +106,7 @@
             window.setInterval(this.checkFocus, 100)
         },
         beforeMount() {
-            //document.oncontextmenu = new Function("return false")
+            document.oncontextmenu = new Function("return false")
         },
         components: {
             Vuz2Theme,
