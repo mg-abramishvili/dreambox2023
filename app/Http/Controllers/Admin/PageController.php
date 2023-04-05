@@ -17,10 +17,14 @@ class PageController extends Controller
     public function page($id)
     {
         return Page::query()
-            ->with(['blocks' => function ($query) {
-                $query->orderBy('order', 'asc');
-            }])
-            ->with('children')
+            ->with([
+                'blocks' => function ($query) {
+                    $query->orderBy('order', 'asc');
+                },
+                'children' => function ($query) {
+                    $query->orderBy('order', 'asc');
+                }
+            ])
             ->find($id);
     }
 

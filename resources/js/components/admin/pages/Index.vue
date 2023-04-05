@@ -105,14 +105,7 @@ export default {
                 pages: this.pages.map(function(page, index) {{
                     return {
                         id: page.id,
-                        name: page.name,
-                        parent_id: page.parent_id,
-                        language_id: page.language_id,
                         order: index,
-                        icon_id: page.icon_id,
-                        is_folder: page.is_folder,
-                        created_at: page.created_at,
-                        updated_at: page.updated_at,
                     } 
                 }})
             })
