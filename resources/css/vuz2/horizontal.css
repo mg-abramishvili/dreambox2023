@@ -151,7 +151,7 @@ header .datetime .date {
     position: relative;
     overflow: hidden;
     border-radius: 1vh;
-    padding: 4vh 8vh 4vh 18vh;
+    padding: 3vh 8vh 4vh 18vh;
 }
 .page:before {
     content: '';
@@ -180,10 +180,11 @@ header .datetime .date {
 }
 .page-header {
     border-bottom: 0.1vh solid #ccc;
-    height: 5vh;
-    line-height: 5vh;
+    height: 7vh;
     overflow: hidden;
-    margin-bottom: 3vh;
+    margin-bottom: 2vh;
+    display: flex;
+    align-items: center;
 }
 .page-header h1 {
     margin: 0;
