@@ -34,6 +34,10 @@ export default {
         },
         goTo(fromPage, toPage) {
             if(fromPage) {
+                if(fromPage.is_folder) {
+                    this.$refs.vuz2.slideToZero()
+                }
+
                 fromPage.blocks.forEach(block => {
                     if(block.type == 'video') {
                         let video = document.getElementById('video_' + block.id)
