@@ -78,6 +78,16 @@ class PageController extends Controller
         $page->parent_id = $request->parent_id;
 
         $page->save();
+        
+        if(isset($page->blocks))
+        {
+            foreach($page->blocks as $block)
+            {
+                if(!in_array($block->id, array_column($request->blocks, 'id'))) {
+                    $block->delete();
+                }
+            }
+        }
 
         if(isset($request->blocks)) {
             foreach($request->blocks as $b)

@@ -124,7 +124,7 @@
             </swiper> -->
             <ul>
                 <li v-for="route in routes" :key="route.id" @click="SelectRoute(route)">
-                    <a>{{ route.id }}</a>
+                    <a>{{ route.name }}</a>
                 </li>
             </ul>
         </div>

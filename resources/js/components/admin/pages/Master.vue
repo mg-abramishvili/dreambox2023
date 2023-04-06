@@ -17,8 +17,6 @@
             </h1>
         </div>
 
-        <!-- <pre>{{blocks}}</pre> -->
-
         <div v-if="views.loading" class="p-4">
             <Loader />
         </div>
