@@ -36,7 +36,7 @@
                         </svg>
                     </button>
                 </template>
-                <p v-else>Папка пуста.</p>
+                <p v-else class="text-danger">Папка пуста.</p>
             </template>
 
             <template v-for="block in page.blocks">

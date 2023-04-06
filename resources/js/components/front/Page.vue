@@ -55,11 +55,6 @@ export default {
                             this.$refs.vuz2.$refs.routes[0].slideToZero()
                         }
 
-                        if(block.type == 'events') {
-                            this.$refs.vuz2.$refs.events[0].slideToZero()
-                            this.$refs.vuz2.$refs.events[0].descriptionModalContent = ''
-                        }
-
                         if(block.type == 'image_slider') {
                             this.$refs.vuz2.slideToZero()
                         }

@@ -159,7 +159,7 @@
             </div>
         </div>
     </div>
-    <p v-else>Маршрутов нет.</p>
+    <p v-else class="text-danger">Маршрутов нет.</p>
 </template>
 
 <script>
@@ -194,11 +194,13 @@ export default {
         }
     },
     mounted() {
-        this.panzoom = Panzoom(document.getElementById('panzoom'), {
-            minScale: 1,
-            maxScale: 3,
-            contain: 'outside',
-        })
+        if(this.routes.length) {
+            this.panzoom = Panzoom(document.getElementById('panzoom'), {
+                minScale: 1,
+                maxScale: 3,
+                contain: 'outside',
+            })
+        }
     },
     created() {
         this.views.windowWidth = window.screen.availWidth
@@ -290,7 +292,9 @@ export default {
             this.panzoom.zoomOut()
         },
         zoomReset() {
-            this.panzoom.reset()
+            if(this.routes.length) {
+                this.panzoom.reset()
+            }
         },
         onSwiper(swiper) {
             this.swiper = swiper
