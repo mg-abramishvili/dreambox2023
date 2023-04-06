@@ -1,5 +1,5 @@
 <template>
-    <div class="routes-page" :class="[`${views.windowWidth > 1920 ? 'map4K':'map1080'}`]">
+    <div v-if="routes.length" class="routes-page" :class="[`${views.windowWidth > 1920 ? 'map4K':'map1080'}`]">
         <div class="panzoom-wrapper">
             <div class="panzoom-controls">
                 <button @click="zoomIn()">
@@ -159,6 +159,7 @@
             </div>
         </div>
     </div>
+    <p v-else>Маршрутов нет.</p>
 </template>
 
 <script>

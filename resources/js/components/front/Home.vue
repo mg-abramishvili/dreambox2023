@@ -43,17 +43,19 @@ export default {
         goToPage(page) {
             this.$refs.vuz2.slideToZero()
 
-            page.blocks.forEach(block => {
-                if(block.type == 'video') {
-                    setTimeout(() => {
-                        let video = document.getElementById('video_' + block.id)
-
-                        if(video) {
-                            video.play()
-                        }
-                    }, 100)
-                }
-            })
+            if(page.blocks && page.blocks.length) {
+                page.blocks.forEach(block => {
+                    if(block.type == 'video') {
+                        setTimeout(() => {
+                            let video = document.getElementById('video_' + block.id)
+    
+                            if(video) {
+                                video.play()
+                            }
+                        }, 100)
+                    }
+                })
+            }
 
             this.$router.push({name: 'Page', params: {id: page.id}})
         },
