@@ -1,5 +1,5 @@
 <template>
-    <div v-if="routes.length" class="routes-page" :class="[`${views.windowWidth > 1920 ? 'map4K':'map1080'}`]">
+    <div v-show="routes.length" class="routes-page" :class="[`${views.windowWidth > 1920 ? 'map4K':'map1080'}`]">
         <div class="panzoom-wrapper">
             <div class="panzoom-controls">
                 <button @click="zoomIn()">
@@ -159,7 +159,7 @@
             </div>
         </div>
     </div>
-    <p v-else class="text-danger">Маршрутов нет.</p>
+    <p v-show="!routes.length" class="text-danger">Маршрутов нет.</p>
 </template>
 
 <script>
@@ -194,13 +194,11 @@ export default {
         }
     },
     mounted() {
-        if(this.routes.length) {
-            this.panzoom = Panzoom(document.getElementById('panzoom'), {
-                minScale: 1,
-                maxScale: 3,
-                contain: 'outside',
-            })
-        }
+        this.panzoom = Panzoom(document.getElementById('panzoom'), {
+            minScale: 1,
+            maxScale: 3,
+            contain: 'outside',
+        })
     },
     created() {
         this.views.windowWidth = window.screen.availWidth
