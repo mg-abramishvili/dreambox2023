@@ -315,6 +315,18 @@ header .datetime .date {
 .page-folder .menu-item {
     border: 0.1vh solid #1F3C8A;
 }
+.page-folder .menu-item:before {
+    width: 8vh;
+}
+.page-folder .menu-item-image {
+    width: 10vh;
+    height: 10vh;
+    left: 2.5vh;
+}
+.page-folder .menu-item span {
+    left: 15vh;
+    font-size: 2vh;
+}
 
 
 /* ROUTES */
