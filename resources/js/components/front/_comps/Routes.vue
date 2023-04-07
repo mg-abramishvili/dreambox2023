@@ -29,43 +29,33 @@
                         <svg v-if="selected.slide == 1" class="map-path svg1">
                             <template v-for="(point, index) in selected.route.route_code_floor1">
                                 <template v-if="selected.route.route_code_floor1[index - 1]">
-                                    <path v-if="point.x" class="key-anim01" fill="none" stroke-width="5px" stroke="rgba(255,51,51,0.8)" :d="'M' + point.x + ' ' + point.y + ', ' + selected.route.route_code_floor1[index - 1].x + ' ' + selected.route.route_code_floor1[index - 1].y"></path>
+                                    <path v-if="point.x" class="key-anim01" fill="none" stroke-width="4px" stroke="rgba(255,51,51,0.8)" :d="'M' + point.x + ' ' + point.y + ', ' + selected.route.route_code_floor1[index - 1].x + ' ' + selected.route.route_code_floor1[index - 1].y"></path>
                                 </template>
                                 <template v-else>
-                                    <path v-if="point.x" class="key-anim01" fill="none" stroke-width="5px" stroke="rgba(255,51,51,0.8)" :d="'M' + point.x + ' ' + point.y + ', '"></path>
+                                    <path v-if="point.x" class="key-anim01" fill="none" stroke-width="4px" stroke="rgba(255,51,51,0.8)" :d="'M' + point.x + ' ' + point.y + ', '"></path>
                                 </template>
-                                <circle v-if="point.x" :cx="point.x" :cy="point.y" r="0" fill="#f33"></circle>
+                                <circle v-if="point.x" :cx="point.x" :cy="point.y" :r="index == selected.route.route_code_floor1.length - 1 ? 6 : 2" fill="#f33"></circle>
+                            
+                                <!-- <text v-if="index == 0" style="stroke: #ffffff; stroke-width: 0.5px;" :x='point.x' :y='point.y' font-family='Verdana' font-size='12' fill='red'><tspan dx='-20' dy='30' font-weight='bold'>{{ selected.route.floor1_text_begin }}</tspan></text> -->
+                                <!-- <text v-if="index == selected.route.route_code_floor1.length - 1" style="stroke: #ffffff; stroke-width: 0.5px;" :x='point.x' :y='point.y' font-family='Verdana' font-size='12' fill='red'><tspan dx='-20' dy='30' font-weight='bold'>{{ selected.route.floor1_text_end }}</tspan></text> -->
+                                <text v-if="index == selected.route.route_code_floor1.length - 1" style="stroke: #ffffff; stroke-width: 0.15px;" :x='point.x' :y='point.y' font-family='Verdana' font-size='10' fill='blue'><tspan dx='-30' dy='20' font-weight='bold'>Вы пришли</tspan></text>
                             </template>
-
-                            <!-- <template v-for="point in points.filter(p => p.scheme_id == selected.scheme.id)">
-                                <polygon v-if="selected.route.point_id == point.id" @click="selectPoint(point)" :points="point.object.join()" style="fill:rgba(0,0,255,0.05);stroke:transparent;stroke-width:1"></polygon>
-                                <polygon v-else @click="selectPoint(point)" :points="point.object.join()" style="fill:transparent;stroke:transparent;stroke-width:1"></polygon>
-                                
-                                <text v-if="selected.route.point_id == point.id" style="stroke: #ffffff; stroke-width: 0.2px;" :x="point.object[0].split(' ')[0]" :y="point.object[0].split(' ').pop()" font-family='Verdana' font-size='6' fill='blue' text-anchor="left">
-                                    <tspan dx='5' dy='5' font-weight='bold'>{{ point.name }}</tspan>
-                                </text>
-                            </template> -->
                         </svg>
 
                         <svg v-if="selected.slide == 2" class="map-path svg1">
                             <template v-for="(point, index) in selected.route.route_code_floor2">
                                 <template v-if="selected.route.route_code_floor2[index - 1]">
-                                    <path v-if="point.x" class="key-anim01" fill="none" stroke-width="5px" stroke="rgba(255,51,51,0.8)" :d="'M' + point.x + ' ' + point.y + ', ' + selected.route.route_code_floor2[index - 1].x + ' ' + selected.route.route_code_floor2[index - 1].y"></path>
+                                    <path v-if="point.x" class="key-anim01" fill="none" stroke-width="4px" stroke="rgba(255,51,51,0.8)" :d="'M' + point.x + ' ' + point.y + ', ' + selected.route.route_code_floor2[index - 1].x + ' ' + selected.route.route_code_floor2[index - 1].y"></path>
                                 </template>
                                 <template v-else>
-                                    <path v-if="point.x" class="key-anim01" fill="none" stroke-width="5px" stroke="rgba(255,51,51,0.8)" :d="'M' + point.x + ' ' + point.y + ', '"></path>
+                                    <path v-if="point.x" class="key-anim01" fill="none" stroke-width="4px" stroke="rgba(255,51,51,0.8)" :d="'M' + point.x + ' ' + point.y + ', '"></path>
                                 </template>
-                                <circle v-if="point.x" :cx="point.x" :cy="point.y" r="0" fill="#f33"></circle>
-                            </template>
+                                <circle v-if="point.x" :cx="point.x" :cy="point.y" :r="index == selected.route.route_code_floor2.length - 1 ? 6 : 2" fill="#f33"></circle>
 
-                            <!-- <template v-for="point in points.filter(p => p.scheme_id == selected.scheme.id)">
-                                <polygon v-if="selected.route.point_id == point.id" @click="selectPoint(point)" :points="point.object.join()" style="fill:rgba(0,0,255,0.05);stroke:transparent;stroke-width:1"></polygon>
-                                <polygon v-else @click="selectPoint(point)" :points="point.object.join()" style="fill:transparent;stroke:transparent;stroke-width:1"></polygon>
-                                
-                                <text v-if="selected.route.point_id == point.id" style="stroke: #ffffff; stroke-width: 0.2px;" :x="point.object[0].split(' ')[0]" :y="point.object[0].split(' ').pop()" font-family='Verdana' font-size='6' fill='blue' text-anchor="left">
-                                    <tspan dx='5' dy='5' font-weight='bold'>{{ point.name }}</tspan>
-                                </text>
-                            </template> -->
+                                <!-- <text v-if="index == 0" style="stroke: #ffffff; stroke-width: 0.5px;" :x='point.x' :y='point.y' font-family='Verdana' font-size='12' fill='red'><tspan dx='-20' dy='30' font-weight='bold'>{{ selected.route.floor2_text_begin }}</tspan></text> -->
+                                <!-- <text v-if="index == selected.route.route_code_floor2.length - 1" style="stroke: #ffffff; stroke-width: 0.5px;" :x='point.x' :y='point.y' font-family='Verdana' font-size='12' fill='red'><tspan dx='-20' dy='30' font-weight='bold'>{{ selected.route.floor2_text_end }}</tspan></text> -->
+                                <text v-if="index == selected.route.route_code_floor2.length - 1" style="stroke: #ffffff; stroke-width: 0.15px;" :x='point.x' :y='point.y' font-family='Verdana' font-size='10' fill='blue'><tspan dx='-30' dy='20' font-weight='bold'>Вы пришли</tspan></text>
+                            </template>
                         </svg>
                     </template>
 
@@ -85,8 +75,8 @@
                                 </svg>
                             </g>
 
-                            <text style="stroke: #ffffff; stroke-width: 0.2px;" :x="kiosks.find(k => k.id == kiosk).x" :y="kiosks.find(k => k.id == kiosk).y" font-family='Verdana' font-size='6' fill='blue' text-anchor="left">
-                                <tspan dx='5' dy='5' font-weight='bold'>Вы здесь</tspan>
+                            <text style="stroke: #ffffff; stroke-width: 0.15px;" :x="kiosks.find(k => k.id == kiosk).x" :y="kiosks.find(k => k.id == kiosk).y" font-family='Verdana' font-size='8' fill='blue' text-anchor="left">
+                                <tspan dx='0' dy='10' font-weight='bold'>Вы здесь</tspan>
                             </text>
                         </svg>
                     </template>

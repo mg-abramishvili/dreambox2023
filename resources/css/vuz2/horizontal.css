@@ -443,15 +443,15 @@ header .datetime .date {
 }
 .routes-list ul li {
     margin-bottom: 0.5vh;
-    height: 5vh;
+    height: auto;
     overflow: hidden;
 }
 .routes-list ul li:last-child {
     margin-bottom: 0;
 }
 .routes-list ul li a {
-    padding: 0vh 1.5vh;
-    font-size: 2vh;
+    padding: 1vh 1.5vh;
+    font-size: 1.75vh;
     border: 0;
     background-color: rgba(0,0,0,0.1);
     border-radius: 0.5vh;

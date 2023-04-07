@@ -13,6 +13,12 @@
  * limitations under the License.
  */
 
+#PDFBug,
+#PDFBug input,
+#PDFBug button,
+#PDFBug select {
+  font: message-box;
+}
 #PDFBug {
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid rgba(102, 102, 102, 1);
@@ -30,12 +36,9 @@
   padding: 3px;
 }
 #PDFBug .panels {
-  bottom: 0;
-  left: 0;
+  inset: 27px 0 0;
   overflow: auto;
   position: absolute;
-  right: 0;
-  top: 27px;
 }
 #PDFBug .panels > div {
   padding: 5px;
