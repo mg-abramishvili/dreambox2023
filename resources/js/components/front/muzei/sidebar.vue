@@ -7,9 +7,5 @@
         <div class="title">
             <p>{{ $config.title }}</p>
         </div>
-
-        <div class="bottom">
-
-        </div>
     </div>
 </template>

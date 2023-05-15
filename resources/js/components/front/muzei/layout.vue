@@ -24,6 +24,14 @@ export default {
         setInterval(this.currentTime, 1000)
         setInterval(this.currentDate, 1000)
     },
+    created() {
+        if(this.$config.orientation == 'horizontal') {
+            import("../../../../css/muzei/horizontal.css")
+        }
+        if(this.$config.orientation == 'vertical') {
+            import("../../../../css/muzei/vertical.css")
+        }
+    },
     methods: {
         currentTime() {
             this.time = this.$dayjs().locale('ru').format('H:mm')
@@ -37,7 +45,3 @@ export default {
     }
 }
 </script>
-
-<style>
-    @import "../../../../css/muzei/vertical.css"
-</style>

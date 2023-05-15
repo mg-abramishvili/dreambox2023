@@ -1,15 +1,14 @@
 <template>
     <div class="home">
         <div class="banners">
-            <swiper
+            <swiper v-if="banners.length"
                 :slides-per-view="1"
                 :allow-touch-move="false"
                 @swiper="onSwiperBanners"
-                class="menu-slider">
+                class="banners-slider">
                 
-                <swiper-slide v-for="(page, index) in pages" @click="goToPage(page)" class="menu-item">
-                    <div class="menu-item-image" v-bind:style="{ 'background-image': 'url(' + page.icon.image + ')' }"></div>
-                    <span>{{ page.name }}</span>
+                <swiper-slide v-for="(banner, index) in banners" class="banner-item">
+                    <div v-if="banner.type == 'image'" class="banner-item-image" v-bind:style="{ 'background-image': 'url(' + banner.content + ')' }"></div>
                 </swiper-slide>
             </swiper>
         </div>
@@ -18,17 +17,14 @@
 
         <div class="menu">
             <swiper v-if="pages.length"
-                :slides-per-view="3"
-                :slides-per-column="2"
-                :slides-per-group="6"
-                :slides-per-column-fill="pages.length >= 6 ? 'column' : 'row'"
-                :space-between="50"
+                :slides-per-view="4"
+                direction="vertical"
                 :allow-touch-move="true"
                 @swiper="onSwiperMenu"
                 class="menu-slider">
                 
                 <swiper-slide v-for="(page, index) in pages" @click="goToPage(page)" class="menu-item">
-                    <div class="menu-item-image" v-bind:style="{ 'background-image': 'url(' + page.icon.image + ')' }"></div>
+                    <!-- <div class="menu-item-image" v-bind:style="{ 'background-image': 'url(' + page.icon.image + ')' }"></div> -->
                     <span>{{ page.name }}</span>
                 </swiper-slide>
             </swiper>

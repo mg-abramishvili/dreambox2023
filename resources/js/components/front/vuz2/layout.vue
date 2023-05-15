@@ -48,7 +48,3 @@
         }
     }
 </script>
-
-<style>
-    @import "../../../../css/vuz2/horizontal.css"
-</style>

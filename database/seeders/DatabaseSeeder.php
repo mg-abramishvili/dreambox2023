@@ -11,6 +11,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ConfigSeeder::class,
             IconSeeder::class,
+            BannerSeeder::class,
+            PageSeeder::class,
         ]);
     }
 }
