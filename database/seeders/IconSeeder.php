@@ -36,6 +36,10 @@ class IconSeeder extends Seeder
                 'id' => 6,
                 'image' => '/img/icons/06.png',
             ],
+            [
+                'id' => 7,
+                'image' => '/img/vladimir/banner1.jpg',
+            ],
         ]);
     }
 }

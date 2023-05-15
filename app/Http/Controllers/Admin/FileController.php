@@ -149,6 +149,21 @@ class FileController extends Controller
             ]);
         }
 
+        if (request()->file('block_audio')) {
+            $file = request()->file('block_audio');
+            $filename = time().'.'.$file->extension();
+
+            if (!file_exists(public_path() . '/uploads/page_block_audios')) {
+                mkdir(public_path() . '/uploads/page_block_audios', 0755, true);
+            }
+
+            $file->move(public_path() . '/uploads/page_block_audios', $filename);
+
+            return \Response::make('/uploads/page_block_audios/' . $filename, 200, [
+                'Content-Disposition' => 'inline',
+            ]);
+        }
+
         if (request()->file('block_pdf')) {
             $file = request()->file('block_pdf');
             $filename = time().'.'.$file->extension();

@@ -16,21 +16,25 @@ class PageSeeder extends Seeder
                 'id' => 1,
                 'name' => 'О городе',
                 'order' => 1,
+                'icon_id' => 7,
             ],
             [
                 'id' => 2,
                 'name' => 'Куда пойти',
                 'order' => 2,
+                'icon_id' => 7,
             ],
             [
                 'id' => 3,
                 'name' => 'Афиша',
                 'order' => 3,
+                'icon_id' => 7,
             ],
             [
                 'id' => 4,
                 'name' => 'Песни о Владимире',
                 'order' => 4,
+                'icon_id' => 7,
             ],
         ]);
     }

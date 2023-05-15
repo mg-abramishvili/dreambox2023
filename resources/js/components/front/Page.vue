@@ -1,13 +1,15 @@
 <template>
-    <template v-if="$theme == 'vuz2'">
+    <template v-if="$config.theme == 'vuz2'">
         <Vuz2Horizontal
-            v-if="$orientation == 'horizontal'"
+            v-if="$config.orientation == 'horizontal'"
             ref="vuz2"
             :page="page"
             :kiosk="$route.params.kiosk" />
+    </template>
 
+    <template v-if="$config.theme == 'muzei'">
         <MuzeiVertical
-            v-if="$orientation == 'vertical'"
+            v-if="$config.orientation == 'vertical'"
             ref="muzei"
             :page="page"
             :kiosk="$route.params.kiosk" />
@@ -37,7 +39,12 @@ export default {
         goTo(fromPage, toPage) {
             if(fromPage) {
                 if(fromPage.is_folder && fromPage.children && fromPage.children.length) {
-                    this.$refs.vuz2.slideToZero()
+                    if(this.$config.theme == 'vuz2') {
+                        this.$refs.vuz2.slideToZero()
+                    }
+                    if(this.$config.theme == 'muzei') {
+                        this.$refs.muzei.slideToZero()
+                    }
                 }
 
                 if(fromPage.blocks && fromPage.blocks.length) {
@@ -49,16 +56,36 @@ export default {
                                 video.load()
                             }
                         }
+                        if(block.type == 'audio') {
+                            let audio = document.getElementById('audio_' + block.id)
+        
+                            if(audio) {
+                                audio.load()
+                            }
+                        }
         
                         if(block.type == 'routes') {
-                            this.$refs.vuz2.$refs.routes[0].closeSearchPanel()
-                            this.$refs.vuz2.$refs.routes[0].resetRoutes()
-                            this.$refs.vuz2.$refs.routes[0].zoomReset()
-                            this.$refs.vuz2.$refs.routes[0].slideToZero()
+                            if(this.$config.theme == 'vuz2') {
+                                this.$refs.vuz2.$refs.routes[0].closeSearchPanel()
+                                this.$refs.vuz2.$refs.routes[0].resetRoutes()
+                                this.$refs.vuz2.$refs.routes[0].zoomReset()
+                                this.$refs.vuz2.$refs.routes[0].slideToZero()
+                            }
+                            if(this.$config.theme == 'muzei') {
+                                this.$refs.muzei.$refs.routes[0].closeSearchPanel()
+                                this.$refs.muzei.$refs.routes[0].resetRoutes()
+                                this.$refs.muzei.$refs.routes[0].zoomReset()
+                                this.$refs.muzei.$refs.routes[0].slideToZero()
+                            }
                         }
 
                         if(block.type == 'image_slider') {
-                            this.$refs.vuz2.slideToZero()
+                            if(this.$config.theme == 'vuz2') {
+                                this.$refs.vuz2.slideToZero()
+                            }
+                            if(this.$config.theme == 'muzei') {
+                                this.$refs.muzei.slideToZero()
+                            }
                         }
                     })
                 }
@@ -76,6 +103,15 @@ export default {
 
                                     if(video) {
                                         video.play()
+                                    }
+                                }, 100)
+                            }
+                            if(block.type == 'audio') {
+                                setTimeout(() => {
+                                    let audio = document.getElementById('audio_' + block.id)
+
+                                    if(audio) {
+                                        audio.play()
                                     }
                                 }, 100)
                             }

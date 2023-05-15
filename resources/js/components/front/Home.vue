@@ -45,7 +45,12 @@ export default {
             })
         },
         goToPage(page) {
-            this.$refs.vuz2.slideToZero()
+            if(this.$config.theme == 'vuz2') {
+                this.$refs.vuz2.slideToZero()
+            }
+            if(this.$config.theme == 'muzei') {
+                this.$refs.muzei.slideToZero()
+            }
 
             if(page.blocks && page.blocks.length) {
                 page.blocks.forEach(block => {
@@ -55,6 +60,15 @@ export default {
     
                             if(video) {
                                 video.play()
+                            }
+                        }, 100)
+                    }
+                    if(block.type == 'audio') {
+                        setTimeout(() => {
+                            let audio = document.getElementById('audio_' + block.id)
+    
+                            if(audio) {
+                                audio.play()
                             }
                         }, 100)
                     }

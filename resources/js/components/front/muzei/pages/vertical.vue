@@ -80,6 +80,12 @@
                     </video>
                 </div>
 
+                <div v-else-if="block.type == 'audio'" class="page-block page-block-audio">
+                    <audio v-if="block.content" :id="'audio_' + block.id" autoplay controls disablePictureInPicture controlsList="noplaybackrate nodownload">
+                        <source :src="block.content" type="audio/mpeg" />
+                    </audio>
+                </div>
+
                 <div v-else-if="block.type == 'pdf'" class="page-block page-block-pdf">
                     <iframe :src="'/pdfjs/web/viewer.html?file=' + block.content" id="page-block-pdf" height="100%" width="100%" style="border: none;"></iframe>
                 </div>

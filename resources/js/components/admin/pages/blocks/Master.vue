@@ -14,6 +14,8 @@
                 <ImageSliderMaster v-if="block.type == 'image_slider'" :block="block" />
                 
                 <VideoMaster v-if="block.type == 'video'" :block="block" />
+
+                <AudioMaster v-if="block.type == 'audio'" :block="block" />
                 
                 <PdfMaster v-if="block.type == 'pdf'" :block="block" />
                 
@@ -30,6 +32,7 @@ import TextMaster from './types/TextMaster.vue'
 import ImageMaster from './types/ImageMaster.vue'
 import ImageSliderMaster from './types/ImageSliderMaster.vue'
 import VideoMaster from './types/VideoMaster.vue'
+import AudioMaster from './types/AudioMaster.vue'
 import PdfMaster from './types/PdfMaster.vue'
 import ExcelMaster from './types/ExcelMaster.vue'
 import IframeMaster from './types/IframeMaster.vue'
@@ -59,6 +62,7 @@ export default {
         ImageMaster,
         ImageSliderMaster,
         VideoMaster,
+        AudioMaster,
         PdfMaster,
         ExcelMaster,
         IframeMaster,

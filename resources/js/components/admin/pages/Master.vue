@@ -51,6 +51,9 @@
                             <button @click="addBlock('video')" class="btn btn-outline-primary">+ Видео</button>
                         </li>
                         <li>
+                            <button @click="addBlock('audio')" class="btn btn-outline-primary">+ Аудио</button>
+                        </li>
+                        <li>
                             <button @click="addBlock('pdf')" class="btn btn-outline-primary">+ PDF</button>
                         </li>
                         <li>
@@ -103,6 +106,13 @@
                                         <source :src="element.content" type="video/mp4" />
                                     </video>
                                     <img v-else src="/img/video-placeholder.png" alt="">
+                                </div>
+                                <button @click="removeBlock(element.id)" class="btn btn-secondary">&times;</button>
+                            </div>
+
+                            <div v-else-if="element.type == 'audio'" class="block-area">
+                                <div @click="editBlock(element)">
+                                    <img src="/img/audio-placeholder.png" alt="">
                                 </div>
                                 <button @click="removeBlock(element.id)" class="btn btn-secondary">&times;</button>
                             </div>

@@ -24,7 +24,7 @@
                 class="menu-slider">
                 
                 <swiper-slide v-for="(page, index) in pages" @click="goToPage(page)" class="menu-item">
-                    <!-- <div class="menu-item-image" v-bind:style="{ 'background-image': 'url(' + page.icon.image + ')' }"></div> -->
+                    <div class="menu-item-image" v-bind:style="{ 'background-image': 'url(' + page.icon.image + ')' }"></div>
                     <span>{{ page.name }}</span>
                 </swiper-slide>
             </swiper>

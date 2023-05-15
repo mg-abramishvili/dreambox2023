@@ -12,7 +12,10 @@ class DatabaseSeeder extends Seeder
             ConfigSeeder::class,
             IconSeeder::class,
             BannerSeeder::class,
+            BlockSeeder::class,
             PageSeeder::class,
+            SchemeSeeder::class,
+            KioskSeeder::class,
         ]);
     }
 }
