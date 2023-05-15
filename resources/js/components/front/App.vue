@@ -1,7 +1,7 @@
-<template>
-    <Vuz2Theme
-        v-if="config.theme == 'vuz2'"
-        ref="vuz2" />
+<template v-if="$config">
+    <Vuz2Theme v-if="$config.theme == 'vuz2'" ref="vuz2" />
+
+    <MuzeiTheme v-if="$config.theme == 'muzei'" ref="muzei" />
 
     <div v-if="screensaver.isActive && screensaver.slides.length" class="screensaver">
         <div @click="closeScreensaver()" class="screensaver-inner">
@@ -12,17 +12,13 @@
 
 <script>
     import Vuz2Theme from './vuz2/layout.vue'
+    import MuzeiTheme from './muzei/layout.vue'
 
     import Screensaver from './_comps/Screensaver.vue'
     
     export default {
         data() {
             return {
-                config: {
-                    theme: 'vuz2',
-                    orientation: 'vertical',
-                },
-
                 screensaver: {
                     isActive: true,
                     timeoutID: '',
@@ -34,17 +30,9 @@
             }
         },
         created() {
-            this.loadConfig()
             this.loadScreensaverSlides()
         },
         methods: {
-            loadConfig() {
-                axios.get(`/api/config`)
-                .then(response => {
-                    this.config = response.data
-                    
-                })
-            },
             loadScreensaverSlides() {
                 axios.get(`/api/screensavers`)
                 .then(response => {
@@ -106,11 +94,12 @@
             window.setInterval(this.checkFocus, 100)
         },
         beforeMount() {
-            document.oncontextmenu = new Function("return false")
+            // document.oncontextmenu = new Function("return false")
         },
         components: {
             Vuz2Theme,
-            Screensaver
+            MuzeiTheme,
+            Screensaver,
         }
     }
 </script>

@@ -8,8 +8,12 @@ import App from './components/front/App.vue'
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
 
-const app = createApp(App).use(router)
+axios.get(`/api/config`).then(response => {
+    const app = createApp(App).use(router)
 
-app.config.globalProperties.$dayjs = dayjs
+    app.config.globalProperties.$dayjs = dayjs
 
-app.mount('#front')
+    app.config.globalProperties.$config = response.data
+
+    app.mount('#front')
+})

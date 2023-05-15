@@ -13,11 +13,11 @@ class ConfigSeeder extends Seeder
     {
         DB::table('configs')->insert([
             'id' => 1,
-            'theme' => 'vuz2',
-            'orientation' => 'horizontal',
-            'activated' => 'n',
-            'title' => 'НГУ им. П. Ф. Лесгафта, Санкт-Петербург',
-            'logo' => '/img/vuz2/logo.png',
+            'theme' => 'muzei',
+            'orientation' => 'vertical',
+            'activated' => 'y',
+            'title' => 'город Владимир',
+            'logo' => '/img/vladimir/logo.png',
         ]);
     }
 }

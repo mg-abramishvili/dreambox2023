@@ -1,8 +1,16 @@
 <template>
-    <template v-if="config.theme == 'vuz2'">
+    <template v-if="$config.theme == 'vuz2'">
         <Vuz2Horizontal
-            v-if="config.orientation == 'horizontal'"
+            v-if="$config.orientation == 'horizontal'"
             ref="vuz2"
+            :pages="pages"
+            :banners="banners" />
+    </template>
+
+    <template v-if="$config.theme == 'muzei'">
+        <MuzeiVertical
+            v-if="$config.orientation == 'vertical'"
+            ref="muzei"
             :pages="pages"
             :banners="banners" />
     </template>
@@ -10,6 +18,7 @@
 
 <script>
 import Vuz2Horizontal from './vuz2/home/horizontal.vue'
+import MuzeiVertical from './muzei/home/vertical.vue'
 
 export default {
     data() {
@@ -17,11 +26,6 @@ export default {
             pages: [],
             banners: [],
         }
-    },
-    computed: {
-        config() {
-            return this.$root.config
-        },
     },
     created() {
         this.loadPages()
@@ -61,7 +65,8 @@ export default {
         },
     },
     components: {
-        Vuz2Horizontal
+        Vuz2Horizontal,
+        MuzeiVertical,
     }
 }
 </script>
